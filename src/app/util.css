@@ -1,0 +1,80 @@
+.horizontal {
+  display: flex;
+}
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+.justify-content-space-between {
+  justify-content: space-between;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.align-items-center {
+  align-items: center;
+}
+.active {
+  background-color: wheat;
+  color: black;
+}
+.dropdown {
+  position: absolute;
+  width: fit-content;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-40%, 0);
+  z-index: 2;
+}
+
+.dropdown div {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+}
+
+.modal {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.modal-content {
+  background-color: whitesmoke;
+  border-radius: 1.5rem;
+  padding: 1rem;
+}
+.seperator {
+  height: 0.05rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  .modal-content {
+    border: 0.5px solid white;
+    background-color: rgb(30, 30, 30);
+  }
+  .seperator {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .dropdown {
+    background-color: rgb(30, 30, 30);
+    border-color: white;
+  }
+}
+@media (hover: hover) {
+  .dropdown div:hover {
+    background-color: wheat;
+    color: black;
+  }
+}
