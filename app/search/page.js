@@ -1,10 +1,10 @@
 import React from "react"
-// import url from "../url"
-import { Space, Seperator } from "../util"
-import Item from "../Item.jsx"
+import { Space, Seperator } from "../../src/util.jsx"
+import Item from "../../src/components/item/Item.jsx"
+import { search } from "./actions.js"
 
-export default async function Page() {
-  const items = await rec()
+export default async function Page({ searchParams }) {
+  const items = await search(searchParams.query)
   function NoResultsSign() {
     return <>
       <Space h="1rem" />
@@ -20,12 +20,8 @@ export default async function Page() {
     </>
   }
   return <>
-    <h1>Recommended</h1>
+    <h1>Search</h1>
     <Results />
   </>
 }
 
-async function rec() {
-  // const response = await fetch(url + `/recommended`)
-  return []
-}

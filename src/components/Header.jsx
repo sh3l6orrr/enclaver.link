@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link'
-import { Dropdown, Filler, Space } from './util.jsx';
+import { Dropdown, Filler, Space } from '../util.jsx';
 import { useRouter } from 'next/navigation'
-import { useStore } from './store.js';
+import { useStore } from '../store.js';
 
 export default function Header() {
   const loggedUser = useStore((state) => state.loggedUser)

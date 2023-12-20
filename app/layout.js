@@ -1,6 +1,6 @@
-import './index.css'
+import '../src/index.css'
 import React from "react"
-import WrapAround from './WrapAround'
+import WrapAround from '../src/components/wraparound/WrapAround.jsx'
 
 export const metadata = {
   title: 'Enclaver',

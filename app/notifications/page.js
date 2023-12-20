@@ -1,27 +1,23 @@
 'use client'
-import React from "react"
-import Item from "../Item.jsx"
-import { Seperator, Space } from "../../util.jsx"
-import { useStore } from "../store.js"
-import url from "../url.js"
+
 import './notifications.css'
+import React from "react"
+import Item from "../../src/components/item/Item.jsx"
+import { Seperator, Space } from "../../src/util.jsx"
+import { useStore } from "../../src/store.js"
 import { useState } from "react"
 import { useEffect } from "react"
+import { getNotifs, readAllNotifs } from './actions.js'
 
 export default function Notifications() {
+  const token = localStorage.getItem('token')
   const loggedUser = useStore(state => state.loggedUser)
   const [notifications, setNotifications] = useState(null)
 
   useEffect(() => {
     if (!loggedUser) return
     async function fetchData() {
-      const headers = new Headers();
-      headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`)
-      const requestOptions = {
-        headers: headers
-      };
-      const res = await fetch(url + "/messages", requestOptions)
-      const notifications = await res.json()
+      const notifications = await getNotifs(token)
       setNotifications(notifications)
     }
     fetchData()
@@ -43,9 +39,16 @@ export default function Notifications() {
       You must be signed in to view notifications.
     </div>
   }
+  function ReadAllButtion() {
+    async function handleClick() {
+      const { ok, msg } = await readAllNotifs(token)
+      alert(ok, msg)
+    }
+    return <button onClick={handleClick}>Read all Notifications</button>
+  }
   return notifications ? <>
     <h1>Notifications</h1>
-    {/* <button onClick={() => submit(null, { action: "/notifications", navigate: false, method: 'post' })}>Read all Notifications</button> */}
+    <ReadAllButtion />
     <Space h="1rem" />
     <Seperator />
     {notifications.map((notification) =>
@@ -60,4 +63,3 @@ export default function Notifications() {
 
   </> : <NoNotificationsSign />
 }
-

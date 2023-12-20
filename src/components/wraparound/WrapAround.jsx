@@ -2,13 +2,13 @@
 
 import './wraparound.css'
 import React, { useEffect, useRef, useState } from "react"
-import Header from './Header.jsx'
-import NavBar from './NavBar.jsx'
-import Sidebar from './Sidebar.jsx'
-import { Filler, Space, Modal, useClickOutside } from './util.jsx';
-import url from "./url.js"
-import { useStore } from "./store.js"
-
+import Header from '../Header.jsx'
+import NavBar from '../NavBar.jsx'
+import Sidebar from '../Sidebar.jsx'
+import { Filler, Space, Modal, useClickOutside } from '../../util.jsx';
+import url from "../../url.js"
+import { useStore } from "../../store.js"
+import { getUsername, createPost } from './wraparound.js'
 
 export default function WrapAround({ children }) {
   const showSignInModal = useStore(state => state.showSignInModal)
@@ -24,45 +24,48 @@ export default function WrapAround({ children }) {
   const setShowAlertBanner = useStore(state => state.setShowAlertBanner)
 
   useEffect(() => {
-    AutoLogIn()
-    window.alert = (status, message) => {
-      setAlertMessage({ status, message });
+    async function autoLogIn() {
+      const token = localStorage.getItem('token')
+      if (!token) return
+      const username = await getUsername(token)
+      if (username) setLoggedUser(username)
+    }
+    autoLogIn()
+
+    window.alert = (ok, msg) => {
+      setAlertMessage({ ok, msg });
       setShowAlertBanner(true);
     }
   }, [])
 
-  async function AutoLogIn() {
-    const token = localStorage.getItem('token')
-    if (!token) return
-    const headers = new Headers();
-    headers.append('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    const response = await fetch(url + '/username', {
-      method: 'GET',
-      headers: headers
-    })
-    if (response.ok) {
-      const username = await response.text()
-      setLoggedUser(username)
-    }
-    return 0
-  }
 
   function AlertBanner() {
     const ref = useRef(null)
     useClickOutside(ref, () => setShowAlertBanner(false))
 
     return <>
-      <div ref={ref} className="alert-banner" style={{ borderColor: alertMessage.status ? 'green' : 'red' }} onClick={() => setShowAlertBanner(false)}>
-        <span>{alertMessage.message} </span>
+      <div ref={ref} className="alert-banner" 
+      style={{ borderColor: alertMessage.ok ? 'green' : 'red' }} onClick={() => setShowAlertBanner(false)}>
+        <span>{alertMessage.msg} </span>
       </div>
     </>
   }
   function CreatePostModal() {
+    const [content, setContent] = useState('')
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData()
+      formData.append('content', content)
+      const { ok, msg } = await createPost(localStorage.getItem('token'), formData)
+      alert(ok, msg)
+      setShowCreatePostModal(false)
+    };
     return <>
       <Modal hideModalCallback={() => setShowCreatePostModal(false)}>
         <h2> New post </h2>
-        <form method="post" action="/" onSubmit={() => setShowCreatePostModal(false)}>
-          <textarea name="content" placeholder="Content..." required />
+        <form onSubmit={handleSubmit}>
+          <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Content..." required />
           <Space h="0.6rem" />
           <div className="horizontal">
             <button type='button' onClick={() => setShowCreatePostModal(false)}>Cancel</button>
@@ -147,3 +150,4 @@ export default function WrapAround({ children }) {
     {showSignUpModal && <SignModal signUp={true} />}
   </>
 }
+

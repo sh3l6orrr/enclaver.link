@@ -1,7 +1,7 @@
 import React from 'react';
-import { Space } from './util.jsx';
+import { Space } from '../util.jsx';
 import Link from 'next/link'
-import { useStore } from './store.js';
+import { useStore } from '../store.js';
 
 export default function Sidebar() {
   const setShowSignInModal = useStore(state => state.setShowSignInModal)

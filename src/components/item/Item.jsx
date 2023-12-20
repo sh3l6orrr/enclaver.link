@@ -2,13 +2,14 @@
 
 import './item.css'
 import React, { useState } from "react"
-import { Space, Seperator, Filler, Modal, Dropdown } from "./util.jsx"
+import { Space, Seperator, Filler, Modal, Dropdown } from "../../util.jsx"
 import Link from 'next/link'
-import { useStore } from "./store"
+import { useStore } from "../../store.js"
 import { useRouter } from 'next/navigation'
 import { commentItem, deleteItem, likeItem, updateItem } from "./item.js"
 
 export default function Item({ item, isPost }) {
+  const token = localStorage.getItem('token')
   const setShowSignInModal = useStore(state => state.setShowSignInModal)
   const loggedUser = useStore(state => state.loggedUser)
   const [showCommentModal, setShowCommentModal] = useState(false)
@@ -19,22 +20,21 @@ export default function Item({ item, isPost }) {
   const router = useRouter()
 
   function CommentModal() {
-    const [comment, setComment] = useState('')
+    const [content, setContent] = useState('')
 
     const handleSubmit = async (event) => {
       event.preventDefault();
       const data = new FormData()
-      data.append('comment', comment)
-      const res = await commentItem(item.id, data)
-      const msg = await res.text()
-      alert(res.ok, msg)
+      data.append('content', content)
+      const { ok, msg } = await commentItem(token, item.id, data)
+      alert(ok, msg)
       setShowCommentModal(false);
     };
     return <>
       <Modal hideModalCallback={() => setShowCommentModal(false)}>
         <h2>Comment</h2>
         <form onSubmit={handleSubmit}>
-          <textarea value={comment} onChange={e => setComment(e.target.value)} placeholder="Leave a comment..." required />
+          <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Leave a comment..." required />
           <Space h="0.5rem" />
           <div className="horizontal">
             <button type='button' onClick={() => setShowCommentModal(false)}>Cancel</button>
@@ -52,9 +52,8 @@ export default function Item({ item, isPost }) {
       event.preventDefault();
       const data = new FormData()
       data.append('content', content)
-      const res = await updateItem(item.id, data)
-      const msg = await res.text()
-      alert(res.ok, msg)
+      const { ok, msg } = await updateItem(token, item.id, data)
+      alert(ok, msg)
       setShowEditModal(false);
     };
     return <>
@@ -91,9 +90,8 @@ export default function Item({ item, isPost }) {
   }
   function ConfirmDeletionModal() {
     async function handleDelete() {
-      const res = await deleteItem(item.id)
-      const msg = await res.text()
-      alert(res.ok, msg)
+      const { ok, msg } = await deleteItem(token, item.id)
+      alert(ok, msg)
       setShowConfirmDeletionModal(false)
     }
     return <>
@@ -126,9 +124,8 @@ export default function Item({ item, isPost }) {
         setShowSignInModal(true);
         return;
       }
-      const res = await likeItem(item.id);
-      const msg = await res.text();
-      alert(res.ok, msg)
+      const { ok, msg } = await likeItem(token, item.id);
+      alert(ok, msg)
     }
     return <div className="item-button" onClick={handleLikeClick}>
       {item.liked_by.includes(loggedUser) ? '♥' : '♡'} Like {item.likes}

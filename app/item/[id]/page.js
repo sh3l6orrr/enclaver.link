@@ -1,7 +1,7 @@
 import React from 'react'
-import { Space } from '../../util.jsx'
-import Item from '../../Item.jsx'
-import url from '../../url.js';
+import { Space } from '../../../src/util.jsx'
+import Item from '../../../src/components/item/Item.jsx'
+import { getItem, getItemComments } from './actions.js'
 
 export default async function ItemView({params}) {
 
@@ -40,12 +40,3 @@ export default async function ItemView({params}) {
   </>
 }
 
-async function getItem(id) {
-  const res = await fetch(url + `/item/${id}`);
-  return await res.json();
-}
-
-async function getItemComments(id) {
-  const res = await fetch(url + `/item/${id}/comments`);
-  return await res.json();
-}

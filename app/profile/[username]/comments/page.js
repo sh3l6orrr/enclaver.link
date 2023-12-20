@@ -1,7 +1,7 @@
-import { Seperator, Space } from "../../../util"
+import { Seperator, Space } from "../../../../src/util.jsx"
 import React from "react"
-import Item from "../../../Item.jsx"
-import url from "../../../url.js"
+import Item from "../../../../src/components/item/Item.jsx"
+import { getComments } from "./actions.js"
 
 export default async function Page({ params }) {
 
@@ -20,7 +20,3 @@ export default async function Page({ params }) {
   </>
 }
 
-async function getComments(username) {
-  const res = await fetch(url + `/profile/${username}/comments`)
-  return await res.json()
-}

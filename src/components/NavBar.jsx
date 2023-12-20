@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import React from 'react'
-import { Space } from './util.jsx'
-import { useStore } from './store.js'
+import { Space } from '../util.jsx'
+import { useStore } from '../store.js'
 
 
 export default function NavBar() {

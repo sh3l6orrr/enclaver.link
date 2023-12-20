@@ -1,10 +1,9 @@
-import { Seperator, Space } from "../../util"
+import { Seperator, Space } from "../../../src/util.jsx"
 import React from "react"
-import Item from "../../Item.jsx"
-import url from "../../url.js"
+import Item from "../../../src/components/item/Item.jsx"
+import { getPosts } from "./actions.js"
 
 export default async function Page({ params }) {
-
   const posts = await getPosts(params.username)
 
   function NoPostsSign() {
@@ -20,7 +19,3 @@ export default async function Page({ params }) {
   </>
 }
 
-async function getPosts(username) {
-  const res = await fetch(url + `/profile/${username}/posts`)
-  return await res.json()
-}
