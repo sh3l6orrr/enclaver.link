@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation'
 import { commentItem, deleteItem, likeItem, updateItem } from "./item.js"
 
 export default function Item({ item, isPost }) {
-  const token = localStorage.getItem('token')
   const setShowSignInModal = useStore(state => state.setShowSignInModal)
+  const token = useStore(state => state.token)
   const loggedUser = useStore(state => state.loggedUser)
   const [showCommentModal, setShowCommentModal] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)

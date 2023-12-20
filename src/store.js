@@ -6,6 +6,8 @@ import { create } from 'zustand'
 export const useStore = create((set) => ({
   loggedUser: null,
   setLoggedUser: (newVal) => set(() => ({ loggedUser: newVal })),
+  token: null,
+  setToken: (newVal) => set(() => ({ token: newVal })),
   showSignInModal: false,
   setShowSignInModal: (newVal) => set(() => ({ showSignInModal: newVal })),
   showSignUpModal: false,

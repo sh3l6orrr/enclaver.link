@@ -22,13 +22,16 @@ export default function WrapAround({ children }) {
   const setAlertMessage = useStore(state => state.setAlertMessage)
   const showAlertBanner = useStore(state => state.showAlertBanner)
   const setShowAlertBanner = useStore(state => state.setShowAlertBanner)
-
+  const setToken = useStore(state=>state.setToken)
   useEffect(() => {
     async function autoLogIn() {
       const token = localStorage.getItem('token')
       if (!token) return
       const username = await getUsername(token)
-      if (username) setLoggedUser(username)
+      if (username) {
+        setLoggedUser(username)
+        setToken(token)
+      }
     }
     autoLogIn()
 
@@ -104,6 +107,7 @@ export default function WrapAround({ children }) {
       const token = await res.text()
       localStorage.setItem('token', token)
       setLoggedUser(username)
+      setToken(token)
       alert(true, 'Signed in successfully.')
       setShowSignInModal(false)
     };

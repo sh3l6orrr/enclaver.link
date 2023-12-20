@@ -10,7 +10,7 @@ import { useEffect } from "react"
 import { getNotifs, readAllNotifs } from './actions.js'
 
 export default function Notifications() {
-  const token = localStorage.getItem('token')
+  const token = useStore(state => state.token)
   const loggedUser = useStore(state => state.loggedUser)
   const [notifications, setNotifications] = useState(null)
 
