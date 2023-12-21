@@ -1,5 +1,4 @@
 'use server'
-import { revalidatePath } from "next/cache";
 import url from "../../../url";
 
 export async function getProfile(username) {
@@ -17,7 +16,6 @@ export async function updateProfile(token, username, formData) {
     cache: 'no-store'
   };
   const res = await fetch(url + `/profile/${username}`, requestOptions)
-  revalidatePath(`/profile/${username}`)
   return { ok: res.ok, msg: await res.text() }
 }
 

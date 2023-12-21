@@ -1,4 +1,3 @@
-import React from "react"
 import { Space, Seperator } from "../../util.jsx"
 import Item from "../../components/item/Item.jsx"
 import { search } from "./actions.js"
