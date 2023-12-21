@@ -1,6 +1,6 @@
 'use client'
 
-import './item.css'
+import './styles.css'
 import React, { useState } from "react"
 import { Space, Seperator, Filler, Dropdown } from "../../util.jsx"
 import Link from 'next/link'

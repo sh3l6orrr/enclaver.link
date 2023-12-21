@@ -1,7 +1,6 @@
 'use client'
 
 import './style.css'
-import React from "react"
 import Item from "../../components/item/Item.jsx"
 import { Seperator, Space } from "../../util.jsx"
 import { useStore } from "../../store.js"
@@ -39,6 +38,12 @@ export default function Notifications() {
       You must be signed in to view notifications.
     </div>
   }
+  function LoadingNotificationsSign() {
+    return <div>
+      <h1>Notifications</h1>
+      Loading...
+    </div>
+  }
   function ReadAllButtion() {
     async function handleClick() {
       const { ok, msg } = await readAllNotifs(token)
@@ -46,7 +51,7 @@ export default function Notifications() {
     }
     return <button onClick={handleClick}>Read all Notifications</button>
   }
-  return notifications ? <>
+  return loggedUser ? notifications ? <>
     <h1>Notifications</h1>
     <ReadAllButtion />
     <Space h="1rem" />
@@ -61,5 +66,5 @@ export default function Notifications() {
       </div>
     )}
 
-  </> : <NoNotificationsSign />
+  </> : <LoadingNotificationsSign /> : <NoNotificationsSign />
 }

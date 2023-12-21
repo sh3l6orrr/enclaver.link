@@ -2,6 +2,22 @@
 
 import url from "../url"
 
+export async function signIn(formData) {
+  const res = await fetch(url + '/signin', {
+    method: 'POST',
+    body: formData
+  })
+  return { ok: res.ok, msg: await res.text()}
+}
+
+export async function signUp(formData) {
+  const res = await fetch(url + '/signup', {
+    method: 'POST',
+    body: formData
+  })
+  return { ok: res.ok, msg: await res.text()}
+}
+
 export async function getUsername(token) {
   const headers = new Headers();
   headers.append('Authorization', `Bearer ${token}`);

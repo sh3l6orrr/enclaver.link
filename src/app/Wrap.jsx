@@ -10,7 +10,7 @@ import LoadingBar from './LoadingBar.jsx'
 import { getUsername } from './actions.js'
 import { useStore } from "../store.js"
 
-export default function Wrap({children}) {
+export default function Wrap({ children }) {
   const showSignInModal = useStore(state => state.showSignInModal)
   const showSignUpModal = useStore(state => state.showSignUpModal)
 
@@ -41,18 +41,18 @@ export default function Wrap({children}) {
   }, [setAlertMessage, setLoggedUser, setShowAlertBanner, setToken])
 
   return <>
-          <Header />
-        <NavBar />
-        <Sidebar />
-        <main>
+    <Header />
+    <NavBar />
+    <Sidebar />
+    <main>
 
-          {children}
-        </main>
+      {children}
+    </main>
 
-        {showCreatePostModal && <CreatePostModal />}
-        {showSignInModal && <SignModal />}
-        {showSignUpModal && <SignModal signUp={true} />}
-        {showLoadingBar && <LoadingBar />}
-        {showAlertBanner && <AlertBanner />}
+    {showCreatePostModal && <CreatePostModal />}
+    {showSignInModal && <SignModal />}
+    {showSignUpModal && <SignModal up={true} />}
+    {showLoadingBar && <LoadingBar />}
+    {showAlertBanner && <AlertBanner />}
   </>
 }

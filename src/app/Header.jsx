@@ -53,7 +53,7 @@ export default function Header() {
               localStorage.removeItem('token')
               setLoggedUser(null)
               router.push('/')
-              alert({ status: true, message: 'You are signed out.' })
+              alert(true, 'You are signed out.')
               setShowAccountDropdownMobile(false)
             }}> ⎋ Sign Out </div>
           </>
