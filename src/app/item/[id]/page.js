@@ -1,16 +1,16 @@
 import React from 'react'
 import { Space } from '../../../util.jsx'
 import Item from '../../../components/item/Item.jsx'
-import { getItemComments } from './actions.js'
+import { getItem, getItemComments } from './actions.js'
 
 export default async function ItemView({params}) {
-
+  const item = await getItem(params.id)
   const comments = await getItemComments(params.id)
 
   function CommentItem({ comment }) {
     return <>
       <li>
-        <Item id={comment.id} />
+        <Item item={comment} />
         <CommentList comments={comment.comments_content} />
       </li>
     </>
@@ -33,7 +33,7 @@ export default async function ItemView({params}) {
     </>
   }
   return <>
-    <Item id={params.id} isPost={true} />
+    <Item item={item} isPost={true} />
 
     {comments.length !== 0 ? <CommentList comments={comments} /> : <NoCommentsSign />}
   </>

@@ -14,7 +14,7 @@ export default async function Page({ params }) {
   }
   return <>
     <Seperator />
-    {posts.length !== 0 ? posts.map((post) => <Item id={post.id} key={post.id} />)
+    {posts.length !== 0 ? posts.map((post) => <Item item={post} key={post.id} />)
       : <NoPostsSign />}
   </>
 }

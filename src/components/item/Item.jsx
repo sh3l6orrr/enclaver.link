@@ -6,12 +6,9 @@ import { Space, Seperator, Filler, Modal, Dropdown } from "../../util.jsx"
 import Link from 'next/link'
 import { useStore } from "../../store.js"
 import { useRouter } from 'next/navigation'
-import { commentItem, deleteItem, getItem, likeItem, updateItem } from "./item.js"
-import { useEffect } from 'react'
+import { commentItem, deleteItem, likeItem, updateItem } from "./item.js"
 
-
-
-export default function Item({ id, isPost }) {
+export default function Item({ item, isPost }) {
 
   const setShowSignInModal = useStore(state => state.setShowSignInModal)
   const token = useStore(state => state.token)
@@ -20,15 +17,7 @@ export default function Item({ id, isPost }) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
   const [showConfirmDeletionModal, setShowConfirmDeletionModal] = useState(false)
-  const [item, setItem] = useState(null)
-
-  useEffect(() => {
-    async function fetchData() {
-      const item = await getItem(id)
-      setItem(item)
-    }
-    fetchData()
-  }, [id])
+  const [optimisticItem, setOptimisticItem] = useState(item)
 
   const router = useRouter()
 
@@ -37,6 +26,10 @@ export default function Item({ id, isPost }) {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
+      setOptimisticItem({
+        ...optimisticItem,
+        comment_cnt: parseInt(optimisticItem.comment_cnt) + 1
+      })
       const data = new FormData()
       data.append('content', content)
       const { ok, msg } = await commentItem(token, item.id, data)
@@ -59,7 +52,7 @@ export default function Item({ id, isPost }) {
     </>
   }
   function EditModal() {
-    const [content, setContent] = useState(item.content)
+    const [content, setContent] = useState(optimisticItem.content)
 
     const handleSubmit = async (event) => {
       event.preventDefault();
@@ -137,11 +130,23 @@ export default function Item({ id, isPost }) {
         setShowSignInModal(true);
         return;
       }
-      const { ok, msg } = await likeItem(token, item.id);
-      alert(ok, msg)
+      if (optimisticItem.liked_by.includes(loggedUser)) {
+        setOptimisticItem({
+          ...optimisticItem,
+          likes: parseInt(optimisticItem.likes) - 1,
+          liked_by: optimisticItem.liked_by.filter(username => username !== loggedUser)
+        })
+      } else {
+        setOptimisticItem({
+          ...optimisticItem,
+          likes: parseInt(optimisticItem.likes) + 1,
+          liked_by: [...optimisticItem.liked_by, loggedUser]
+        })
+      }
+      await likeItem(token, item.id);
     }
     return <div className="item-button" onClick={handleLikeClick}>
-      {item.liked_by.includes(loggedUser) ? '♥' : '♡'} Like {item.likes}
+      {optimisticItem.liked_by.includes(loggedUser) ? '♥' : '♡'} Like {optimisticItem.likes}
     </div>
   }
 
@@ -153,11 +158,12 @@ export default function Item({ id, isPost }) {
         return
       }
       setShowCommentModal(true)
-    }}> ✎ Comment {item.comment_cnt}</div>
+    }}> ✎ Comment {optimisticItem.comment_cnt}</div>
   }
 
   return item && <>
     <div className={isPost ? null : "item"} >
+
       <Space h="1rem" />
       <div style={{ margin: "0 1rem" }} onClick={() => { isPost ? null : router.push(`/item/${item.id}`) }}>
         <div className="horizontal">
