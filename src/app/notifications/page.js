@@ -2,9 +2,9 @@
 
 import './notifications.css'
 import React from "react"
-import Item from "../../src/components/item/Item.jsx"
-import { Seperator, Space } from "../../src/util.jsx"
-import { useStore } from "../../src/store.js"
+import Item from "../../components/item/Item.jsx"
+import { Seperator, Space } from "../../util.jsx"
+import { useStore } from "../../store.js"
 import { useState } from "react"
 import { useEffect } from "react"
 import { getNotifs, readAllNotifs } from './actions.js'
@@ -21,7 +21,7 @@ export default function Notifications() {
       setNotifications(notifications)
     }
     fetchData()
-  }, [loggedUser])
+  }, [loggedUser, token])
 
   function DeletedItem() {
     return <div className="comment-item" >

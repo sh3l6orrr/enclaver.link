@@ -22,13 +22,13 @@ export default function Item({ id, isPost }) {
   const [showConfirmDeletionModal, setShowConfirmDeletionModal] = useState(false)
   const [item, setItem] = useState(null)
 
-  useEffect(()=>{
+  useEffect(() => {
     async function fetchData() {
       const item = await getItem(id)
       setItem(item)
     }
     fetchData()
-  },[])
+  }, [id])
 
   const router = useRouter()
 

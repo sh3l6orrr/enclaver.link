@@ -1,4 +1,4 @@
-import url from "../../../src/url";
+import url from "../../../url";
 
 export async function getItemComments(id) {
   const res = await fetch(url + `/item/${id}/comments`, { cache: 'no-store' });

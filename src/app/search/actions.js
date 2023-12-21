@@ -1,4 +1,4 @@
-import url from "../../src/url"
+import url from "../../url"
 
 export async function search(query) {
   const res = await fetch(url + `/search/${query}`, { cache: 'no-store' })

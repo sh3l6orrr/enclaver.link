@@ -1,8 +1,8 @@
 'use client'
 
-import { Dropdown, Filler, Modal, Space } from "../../../src/util.jsx"
+import { Dropdown, Filler, Modal, Space } from "../../../util.jsx"
 import React, { useState } from "react"
-import { useStore } from "../../../src/store.js"
+import { useStore } from "../../../store.js"
 import { useRouter } from 'next/navigation'
 import { useEffect } from "react"
 import { getProfile, updateProfile } from "./actions.js"
@@ -22,7 +22,7 @@ export default function Profile({ params, children }) {
       setProfile(profile)
     }
     fetchData()
-  }, [])
+  }, [params.username])
 
   function ProfileDropdown() {
     return <>

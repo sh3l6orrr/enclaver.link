@@ -5,10 +5,10 @@ import React, { useEffect } from 'react';
 import { useRef } from 'react';
 
 export const useClickOutside = (ref, callback) => {
-  const handleClick = (e) => {
-    if (ref.current && !ref.current.contains(e.target)) callback()
-  }
   useEffect(() => {
+    const handleClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) callback()
+    }
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick)
   }, [ref, callback])

@@ -22,7 +22,7 @@ export default function WrapAround({ children }) {
   const setAlertMessage = useStore(state => state.setAlertMessage)
   const showAlertBanner = useStore(state => state.showAlertBanner)
   const setShowAlertBanner = useStore(state => state.setShowAlertBanner)
-  const setToken = useStore(state=>state.setToken)
+  const setToken = useStore(state => state.setToken)
   useEffect(() => {
     async function autoLogIn() {
       const token = localStorage.getItem('token')
@@ -39,7 +39,7 @@ export default function WrapAround({ children }) {
       setAlertMessage({ ok, msg });
       setShowAlertBanner(true);
     }
-  }, [])
+  }, [setAlertMessage, setLoggedUser, setShowAlertBanner, setToken])
 
 
   function AlertBanner() {
@@ -47,8 +47,8 @@ export default function WrapAround({ children }) {
     useClickOutside(ref, () => setShowAlertBanner(false))
 
     return <>
-      <div ref={ref} className="alert-banner" 
-      style={{ borderColor: alertMessage.ok ? 'green' : 'red' }} onClick={() => setShowAlertBanner(false)}>
+      <div ref={ref} className="alert-banner"
+        style={{ borderColor: alertMessage.ok ? 'green' : 'red' }} onClick={() => setShowAlertBanner(false)}>
         <span>{alertMessage.msg} </span>
       </div>
     </>

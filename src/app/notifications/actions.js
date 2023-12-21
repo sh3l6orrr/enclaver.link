@@ -1,6 +1,6 @@
 'use server'
 
-import url from "../../src/url.js"
+import url from "../../url.js"
 
 export async function getNotifs(token) {
   const headers = new Headers();

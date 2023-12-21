@@ -1,6 +1,6 @@
-import { Seperator, Space } from "../../../src/util.jsx"
+import { Seperator, Space } from "../../../util.jsx"
 import React from "react"
-import Item from "../../../src/components/item/Item.jsx"
+import Item from "../../../components/item/Item.jsx"
 import { getPosts } from "./actions.js"
 
 export default async function Page({ params }) {

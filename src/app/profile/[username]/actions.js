@@ -1,6 +1,6 @@
 'use server'
 import { revalidateTag } from "next/cache";
-import url from "../../../src/url";
+import url from "../../../url";
 
 export async function getProfile(username) {
   const res = await fetch(url + `/profile/${username}`, { next: { tags: [`/profile/${username}`] } })

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Space } from '../../../src/util.jsx'
-import Item from '../../../src/components/item/Item.jsx'
+import { Space } from '../../../util.jsx'
+import Item from '../../../components/item/Item.jsx'
 import { getItemComments } from './actions.js'
 
 export default async function ItemView({params}) {

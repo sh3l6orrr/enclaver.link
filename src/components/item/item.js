@@ -25,7 +25,7 @@ export async function likeItem(token, id) {
 
   const res = await fetch(url + `/item/${id}/like`, requestOptions)
   revalidateTag(`/item/${id}`)
-  return {ok: res.ok, msg: await res.text()}
+  return { ok: res.ok, msg: await res.text() }
 }
 export async function commentItem(token, id, formData) {
   const headers = new Headers();
@@ -38,10 +38,10 @@ export async function commentItem(token, id, formData) {
   };
   const res = await fetch(url + `/item/${id}/comment`, requestOptions)
   revalidateTag(`/item/${id}`)
-  return {ok: res.ok, msg: await res.text()}
+  return { ok: res.ok, msg: await res.text() }
 }
 
-export async function updateItem(token,id, formData) {
+export async function updateItem(token, id, formData) {
   const headers = new Headers();
   headers.append('Authorization', `Bearer ${token}`)
   const requestOptions = {
@@ -52,11 +52,11 @@ export async function updateItem(token,id, formData) {
   };
   const res = await fetch(url + `/item/${id}/edit`, requestOptions)
   revalidateTag(`/item/${id}`)
-  return {ok: res.ok, msg: await res.text()}
+  return { ok: res.ok, msg: await res.text() }
 
 }
 
-export async function deleteItem(token,id) {
+export async function deleteItem(token, id) {
   const headers = new Headers();
   headers.append('Authorization', `Bearer ${token}`)
   const requestOptions = {
@@ -66,5 +66,5 @@ export async function deleteItem(token,id) {
   };
   const res = await fetch(url + `/item/${id}/delete`, requestOptions)
   revalidateTag(`/item/${id}`)
-  return {ok: res.ok, msg: await res.text()}
+  return { ok: res.ok, msg: await res.text() }
 }

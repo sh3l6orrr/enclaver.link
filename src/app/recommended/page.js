@@ -1,7 +1,7 @@
 import React from "react"
 // import url from "../url"
-import { Space, Seperator } from "../../src/util.jsx"
-import Item from "../../src/components/item/Item.jsx"
+import { Space, Seperator } from "../../util.jsx"
+import Item from "../../components/item/Item.jsx"
 
 export default async function Page() {
   // const res= await rec()
