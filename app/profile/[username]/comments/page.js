@@ -15,7 +15,7 @@ export default async function Page({ params }) {
   }
   return <>
     <Seperator />
-    {comments.length !== 0 ? comments.map((comment) => <Item item={comment} key={comment.id} />)
+    {comments.length !== 0 ? comments.map((comment) => <Item id={comment.id} key={comment.id} />)
       : <NoCommentsSign />}
   </>
 }

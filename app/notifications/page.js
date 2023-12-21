@@ -55,7 +55,7 @@ export default function Notifications() {
       <div key={notification.id} style={{ position: "relative" }}>
         <div className="unread-badge" />
         {notification.content
-          ? <Item item={notification.content} loggedUser={loggedUser} />
+          ? <Item id={notification.content.id} loggedUser={loggedUser} />
           : <DeletedItem />
         }
       </div>

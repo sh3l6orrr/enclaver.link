@@ -6,9 +6,13 @@ import { Space, Seperator, Filler, Modal, Dropdown } from "../../util.jsx"
 import Link from 'next/link'
 import { useStore } from "../../store.js"
 import { useRouter } from 'next/navigation'
-import { commentItem, deleteItem, likeItem, updateItem } from "./item.js"
+import { commentItem, deleteItem, getItem, likeItem, updateItem } from "./item.js"
+import { useEffect } from 'react'
 
-export default function Item({ item, isPost }) {
+
+
+export default function Item({ id, isPost }) {
+
   const setShowSignInModal = useStore(state => state.setShowSignInModal)
   const token = useStore(state => state.token)
   const loggedUser = useStore(state => state.loggedUser)
@@ -16,6 +20,15 @@ export default function Item({ item, isPost }) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
   const [showConfirmDeletionModal, setShowConfirmDeletionModal] = useState(false)
+  const [item, setItem] = useState(null)
+
+  useEffect(()=>{
+    async function fetchData() {
+      const item = await getItem(id)
+      setItem(item)
+    }
+    fetchData()
+  },[])
 
   const router = useRouter()
 
@@ -143,7 +156,7 @@ export default function Item({ item, isPost }) {
     }}> ✎ Comment {item.comment_cnt}</div>
   }
 
-  return <>
+  return item && <>
     <div className={isPost ? null : "item"} >
       <Space h="1rem" />
       <div style={{ margin: "0 1rem" }} onClick={() => { isPost ? null : router.push(`/item/${item.id}`) }}>

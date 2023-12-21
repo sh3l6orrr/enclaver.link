@@ -1,7 +1,7 @@
 import React from "react"
-import url from "../src/url.js"
 import { Space, Seperator } from "../src/util.jsx"
 import Item from "../src/components/item/Item.jsx"
+import { getLatest } from "./actions.js"
 
 export default async function Page() {
   const items = await getLatest()
@@ -15,7 +15,7 @@ export default async function Page() {
   function Results() {
     return <>
       <Seperator />
-      {items.length !== 0 ? items.map(item => <Item key={item.id} item={item} />)
+      {items.length !== 0 ? items.map(item => <Item key={item.id} id={item.id} />)
         : <NoResultsSign />}
     </>
   }
@@ -25,8 +25,3 @@ export default async function Page() {
   </>
 }
 
-async function getLatest() {
-  const res = await fetch(url + '/posts')
-  const latest = await res.json()
-  return latest
-}

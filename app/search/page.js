@@ -15,7 +15,7 @@ export default async function Page({ searchParams }) {
   function Results() {
     return <>
       <Seperator />
-      {items.length !== 0 ? items.map(item => <Item key={item.id} item={item} />)
+      {items.length !== 0 ? items.map(item => <Item key={item.id} id={item.id} />)
         : <NoResultsSign />}
     </>
   }
