@@ -1,6 +1,7 @@
+
 import '../index.css'
-import React from "react"
-import WrapAround from '../components/wraparound/WrapAround.jsx'
+
+import Wrap from './Wrap'
 
 export const metadata = {
   title: 'Enclaver',
@@ -12,13 +13,16 @@ export const viewport = {
     { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
 }
+
 export default function RootLayout({ children }) {
+
   return <>
     <html lang="en">
       <body>
-        <WrapAround>
+        <Wrap>
+
           {children}
-        </WrapAround>
+        </Wrap>
       </body>
     </html>
   </>

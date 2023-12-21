@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from "next/cache.js";
 import url from "../../url.js"
 
 export async function getNotifs(token) {
@@ -22,5 +23,6 @@ export async function readAllNotifs(token) {
     cache: 'no-store'
   };
   const res = await fetch(url + "/messages", requestOptions);
+  revalidatePath('messages')
   return { ok: res.ok, msg: await res.text() }
 }

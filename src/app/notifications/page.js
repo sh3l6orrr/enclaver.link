@@ -1,6 +1,6 @@
 'use client'
 
-import './notifications.css'
+import './style.css'
 import React from "react"
 import Item from "../../components/item/Item.jsx"
 import { Seperator, Space } from "../../util.jsx"

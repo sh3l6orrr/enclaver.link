@@ -17,8 +17,8 @@ export default function Item({ item, isPost }) {
   const [showDropdown, setShowDropdown] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
   const [showConfirmDeletionModal, setShowConfirmDeletionModal] = useState(false)
+  const setShowLoadingBar = useStore(state => state.setShowLoadingBar)
   const [optimisticItem, setOptimisticItem] = useState(item)
-
   const router = useRouter()
 
   function CommentModal() {
@@ -33,8 +33,9 @@ export default function Item({ item, isPost }) {
       const data = new FormData()
       data.append('content', content)
       const { ok, msg } = await commentItem(token, item.id, data)
+      setShowCommentModal(false)
       alert(ok, msg)
-      setShowCommentModal(false);
+      router.refresh()
     };
     return <>
       <Modal hideModalCallback={() => setShowCommentModal(false)}>
@@ -56,11 +57,14 @@ export default function Item({ item, isPost }) {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
+      setShowLoadingBar(true)
       const data = new FormData()
       data.append('content', content)
       const { ok, msg } = await updateItem(token, item.id, data)
+      setShowEditModal(false)
       alert(ok, msg)
-      setShowEditModal(false);
+      router.refresh()
+      setShowLoadingBar(false)
     };
     return <>
       <Modal hideModalCallback={() => setShowEditModal(false)}>
@@ -99,6 +103,7 @@ export default function Item({ item, isPost }) {
       const { ok, msg } = await deleteItem(token, item.id)
       alert(ok, msg)
       setShowConfirmDeletionModal(false)
+      router.refresh()
     }
     return <>
       <Modal hideModalCallback={() => setShowConfirmDeletionModal(false)}>
@@ -158,7 +163,7 @@ export default function Item({ item, isPost }) {
         return
       }
       setShowCommentModal(true)
-    }}> ✎ Comment {optimisticItem.comment_cnt}</div>
+    }}> ✎ Comment {item.comment_cnt}</div>
   }
 
   return item && <>

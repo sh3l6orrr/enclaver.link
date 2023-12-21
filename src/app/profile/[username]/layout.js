@@ -43,23 +43,24 @@ export default function Profile({ params, children }) {
     const [bio, setBio] = useState(profile.bio)
     const handleSubmit = async (event) => {
       event.preventDefault();
+      setProfile({ ...profile, nickname: nickname, bio: bio })
       const formData = new FormData()
       formData.append('nickname', nickname)
       formData.append('bio', bio)
       const { ok, msg } = await updateProfile(token, loggedUser, formData)
-      alert(ok, msg)
       setShowEditProfileModal(false)
+      alert(ok, msg)
     };
     return <>
       <Modal hideModalCallback={() => setShowEditProfileModal(false)}>
         <form onSubmit={handleSubmit}>
           <div style={{ width: "25rem" }}>
             <div className="horizontal align-items-center">
-              Nickname <Filler /><input value={nickname} onChange={e=>setNickname(e.target.value)} style={{ width: "10rem" }} required />
+              Nickname <Filler /><input value={nickname} onChange={e => setNickname(e.target.value)} style={{ width: "10rem" }} required />
             </div>
             <Space h="0.5rem" />
             <div className="horizontal align-items-center">
-              Bio <Filler /><input value={bio} onChange={e=>setBio(e.target.value)} style={{ width: "22rem" }} required />
+              Bio <Filler /><input value={bio} onChange={e => setBio(e.target.value)} style={{ width: "22rem" }} required />
             </div>
           </div>
 

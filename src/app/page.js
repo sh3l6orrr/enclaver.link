@@ -1,3 +1,5 @@
+import './styles.css'
+
 import React from "react"
 import { Space, Seperator } from "../util.jsx"
 import Item from "../components/item/Item.jsx"

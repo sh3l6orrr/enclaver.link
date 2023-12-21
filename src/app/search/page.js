@@ -3,6 +3,12 @@ import { Space, Seperator } from "../../util.jsx"
 import Item from "../../components/item/Item.jsx"
 import { search } from "./actions.js"
 
+export async function generateMetadata({ searchParams }) {
+  return {
+    title: `Search - ${searchParams.query}`
+  }
+}
+ 
 export default async function Page({ searchParams }) {
   const items = await search(searchParams.query)
   function NoResultsSign() {

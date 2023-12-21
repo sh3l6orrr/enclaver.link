@@ -1,9 +1,9 @@
 'use server'
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import url from "../../../url";
 
 export async function getProfile(username) {
-  const res = await fetch(url + `/profile/${username}`, { next: { tags: [`/profile/${username}`] } })
+  const res = await fetch(url + `/profile/${username}`, { cache: 'no-store' })
   const profile = await res.json()
   return profile
 }
@@ -17,12 +17,12 @@ export async function updateProfile(token, username, formData) {
     cache: 'no-store'
   };
   const res = await fetch(url + `/profile/${username}`, requestOptions)
-  revalidateTag(`/profile/${username}`)
+  revalidatePath(`/profile/${username}`)
   return { ok: res.ok, msg: await res.text() }
 }
 
 export async function getPosts(username) {
-  const res = await fetch(url + `/profile/${username}/posts`, { cache: 'no-store'})
+  const res = await fetch(url + `/profile/${username}/posts`, { cache: 'no-store' })
   const posts = await res.json()
   return posts
 }

@@ -3,6 +3,11 @@ import React from "react"
 import { Space, Seperator } from "../../util.jsx"
 import Item from "../../components/item/Item.jsx"
 
+export const metadata = {
+  title: 'Recommended',
+  content: 'The best of Enclaver.'
+}
+
 export default async function Page() {
   // const res= await rec()
   // const items = await res.json()

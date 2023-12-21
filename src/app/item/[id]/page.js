@@ -3,6 +3,14 @@ import { Space } from '../../../util.jsx'
 import Item from '../../../components/item/Item.jsx'
 import { getItem, getItemComments } from './actions.js'
 
+export async function generateMetadata({ params }) {
+  const item = await getItem(params.id)
+  return {
+    title: `Enclaver - Post`,
+    description: item.content
+  }
+}
+
 export default async function ItemView({params}) {
   const item = await getItem(params.id)
   const comments = await getItemComments(params.id)

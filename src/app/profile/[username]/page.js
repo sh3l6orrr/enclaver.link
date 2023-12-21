@@ -3,6 +3,12 @@ import React from "react"
 import Item from "../../../components/item/Item.jsx"
 import { getPosts } from "./actions.js"
 
+export async function generateMetadata({ params }) {
+  return {
+    title: `Profile - ${params.username}`
+  }
+}
+
 export default async function Page({ params }) {
   const posts = await getPosts(params.username)
 

@@ -18,4 +18,6 @@ export const useStore = create((set) => ({
   setAlertMessage: (newVal) => set(() => ({ alertMessage: newVal })),
   showAlertBanner: '',
   setShowAlertBanner: (newVal) => set(() => ({ showAlertBanner: newVal })),
+  showLoadingBar: false,
+  setShowLoadingBar: (newVal) => set(() => ({ showLoadingBar: newVal })),
 }))
