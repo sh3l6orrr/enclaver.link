@@ -1,0 +1,9 @@
+.unread-badge {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 10px; 
+  height: 10px; 
+  background-color: red;
+  border-radius: 50%;
+}
