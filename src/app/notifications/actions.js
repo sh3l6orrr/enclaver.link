@@ -22,5 +22,6 @@ export async function readAllNotifs(token) {
     cache: 'no-store'
   };
   const res = await fetch(url + "/messages", requestOptions);
-  return { ok: res.ok, msg: await res.text() }
+  const { success, msg } = await res.json()
+  return { success: success, msg: msg }
 }

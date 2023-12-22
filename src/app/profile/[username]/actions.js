@@ -1,4 +1,5 @@
 'use server'
+
 import url from "../../../url";
 
 export async function getProfile(username) {
@@ -6,17 +7,18 @@ export async function getProfile(username) {
   const profile = await res.json()
   return profile
 }
-export async function updateProfile(token, username, formData) {
+export async function updateProfile(token, formData) {
   const headers = new Headers();
   headers.append('Authorization', `Bearer ${token}`)
   const requestOptions = {
-    method: 'PUT',
+    method: 'POST',
     headers: headers,
     body: formData,
     cache: 'no-store'
   };
-  const res = await fetch(url + `/profile/${username}`, requestOptions)
-  return { ok: res.ok, msg: await res.text() }
+  const res = await fetch(url + `/profile/update`, requestOptions)
+  const { success, msg } = await res.json()
+  return { success: success, msg: msg }
 }
 
 export async function getPosts(username) {

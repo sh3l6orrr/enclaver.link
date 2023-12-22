@@ -2,13 +2,7 @@ import url from "../../../url";
 
 export async function getItem(id) {
   const res = await fetch(url + `/item/${id}`, { cache: 'no-store' });
-  let item
-  try {
-    item = await res.json();
-  } catch {
-    item = null
-  }
-  return item
+  return await res.json();
 }
 
 export async function getItemComments(id) {

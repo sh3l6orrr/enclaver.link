@@ -5,17 +5,22 @@ import url from "../url"
 export async function signIn(formData) {
   const res = await fetch(url + '/signin', {
     method: 'POST',
-    body: formData
+    body: formData,
+    cache: 'no-cache'
   })
-  return { ok: res.ok, msg: await res.text()}
+  const { success, msg, token } = await res.json()
+
+  return { success: success, msg: msg, token: token }
 }
 
 export async function signUp(formData) {
   const res = await fetch(url + '/signup', {
     method: 'POST',
-    body: formData
+    body: formData,
+    cache: 'no-cache'
   })
-  return { ok: res.ok, msg: await res.text()}
+  const { success, msg } = await res.json()
+  return { success: success, msg: msg }
 }
 
 export async function getUsername(token) {
@@ -51,5 +56,6 @@ export async function createPost(token, formData) {
     cache: 'no-cache'
   };
   const res = await fetch(url + '/posts', requestOptions)
-  return { ok: res.ok, msg: await res.text() }
+  const { success, msg, newId } = await res.json()
+  return { success: success, msg: msg, newId: newId }
 }

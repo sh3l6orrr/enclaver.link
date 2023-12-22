@@ -11,7 +11,6 @@ export default function ProfileHeader({ profile }) {
   const loggedUser = useStore(state => state.loggedUser)
   const [showProfileDropdown, setShowProfileDropdown] = useState(false)
   const [showEditProfileModal, setShowEditProfileModal] = useState(false)
-  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false)
   const router = useRouter()
 
 
@@ -22,10 +21,7 @@ export default function ProfileHeader({ profile }) {
           setShowEditProfileModal(true)
           setShowProfileDropdown(false)
         }}>⛄︎ Update Profile </div>
-        <div onClick={() => {
-          setShowChangePasswordModal(true)
-          setShowProfileDropdown(false)
-        }}>🗝️ Reset password </div>
+
       </Dropdown >
     </>
   }
@@ -34,13 +30,13 @@ export default function ProfileHeader({ profile }) {
     const [bio, setBio] = useState(profile.bio)
     const handleSubmit = async (event) => {
       event.preventDefault();
-      setProfile({ ...profile, nickname: nickname, bio: bio })
       const formData = new FormData()
       formData.append('nickname', nickname)
       formData.append('bio', bio)
-      const { ok, msg } = await updateProfile(token, loggedUser, formData)
+      const { success, msg } = await updateProfile(token, formData)
       setShowEditProfileModal(false)
-      alert(ok, msg)
+      router.refresh()
+      alert(success, msg)
     };
     return <>
       <Modal hideModalCallback={() => setShowEditProfileModal(false)}>
@@ -61,17 +57,6 @@ export default function ProfileHeader({ profile }) {
             <Filler />
             <button type="submit">Submit</button>
           </div>
-        </form>
-      </Modal>
-    </>
-  }
-  function ChangePasswordModal() {
-    return <>
-      <Modal hideModalCallback={() => setShowChangePasswordModal(false)}>
-        <form method="put" onSubmit={() => setShowChangePasswordModal(false)}>
-          New Password: <input type="password" name="password" required />
-          <Space h="0.5rem" />
-          <button type="submit">Submit</button>
         </form>
       </Modal>
     </>
@@ -102,6 +87,6 @@ export default function ProfileHeader({ profile }) {
 
 
     {showEditProfileModal && <EditProfileModal />}
-    {showChangePasswordModal && <ChangePasswordModal />}
+
   </>
 }

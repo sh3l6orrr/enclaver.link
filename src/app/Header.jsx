@@ -24,6 +24,10 @@ export default function Header() {
             setShowAccountDropdown(false)
           }}> ⛄︎ Profile </div>
           <div onClick={() => {
+            router.push('/settings')
+            setShowAccountDropdown(false)
+          }}> ⚙︎ Settings</div>
+          <div onClick={() => {
             localStorage.removeItem('token')
             setLoggedUser(null)
             router.push('/')
@@ -49,6 +53,10 @@ export default function Header() {
               router.push('/notifications')
               setShowAccountDropdownMobile(false)
             }}> ✽ Notifs </div>
+            <div onClick={() => {
+              router.push('/settings')
+              setShowAccountDropdown(false)
+            }}> ⚙︎ Settings</div>
             <div onClick={() => {
               localStorage.removeItem('token')
               setLoggedUser(null)
@@ -80,7 +88,7 @@ export default function Header() {
             <a onClick={() => {
               router.push('/notifications')
               setShowAccountDropdown(false)
-            }}> ✽ Notifs </a>
+            }}> ✽ Notifs</a>
             <Space w="1.6rem" />
             <div>
               <button style={{ padding: "0.4rem", fontSize: "large" }} onClick={() => setShowAccountDropdown(true)}>

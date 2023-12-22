@@ -18,19 +18,20 @@ export default function SignModal({ up }) {
     formData.append('username', username)
     formData.append('password', password)
     if (up) {
-      const { ok, msg } = await signUp(formData)
-      alert(ok, msg)
-      if (!ok) return
+      const { success, msg } = await signUp(formData)
+      alert(success, msg)
+      if (!success) return
       setShowSignUpModal(true)
       setShowSignInModal(false)
       return
     }
-    const { ok, msg } = await signIn(formData)
-    if (!ok) { alert(false, msg); return }
-    alert(true, 'Signed in successfully')
-    localStorage.setItem('token', msg)
+    const { success, msg, token } = await signIn(formData)
+    alert(success, msg)
+    if (!success) return 
+
+    localStorage.setItem('token', token)
     setLoggedUser(username)
-    setToken(msg)
+    setToken(token)
     setShowSignInModal(false)
   }
   return <>

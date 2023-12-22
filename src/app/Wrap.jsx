@@ -34,8 +34,8 @@ export default function Wrap({ children }) {
     }
     autoLogIn()
 
-    window.alert = (ok, msg) => {
-      setAlertMessage({ ok, msg });
+    window.alert = (success, msg) => {
+      setAlertMessage({ success, msg });
       setShowAlertBanner(true);
     }
   }, [setAlertMessage, setLoggedUser, setShowAlertBanner, setToken])

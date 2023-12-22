@@ -12,7 +12,8 @@ export async function likeItem(token, id) {
   };
 
   const res = await fetch(url + `/item/${id}/like`, requestOptions)
-  return { ok: res.ok, msg: await res.text() }
+  const { success, msg } = await res.json()
+  return { success: success, msg: msg }
 }
 export async function commentItem(token, id, formData) {
   const headers = new Headers();
@@ -24,7 +25,8 @@ export async function commentItem(token, id, formData) {
     cache: 'no-store'
   };
   const res = await fetch(url + `/item/${id}/comment`, requestOptions)
-  return { ok: res.ok, msg: await res.text() }
+  const { success, msg, newId } = await res.json()
+  return { success: success, msg: msg, newId: newId }
 }
 
 export async function updateItem(token, id, formData) {
@@ -37,7 +39,8 @@ export async function updateItem(token, id, formData) {
     cache: 'no-store'
   };
   const res = await fetch(url + `/item/${id}/edit`, requestOptions)
-  return { ok: res.ok, msg: await res.text() }
+  const { success, msg } = await res.json()
+  return { success: success, msg: msg }
 
 }
 
@@ -50,5 +53,6 @@ export async function deleteItem(token, id) {
     cache: 'no-store'
   };
   const res = await fetch(url + `/item/${id}/delete`, requestOptions)
-  return { ok: res.ok, msg: await res.text() }
+  const { success, msg } = await res.json()
+  return { success: success, msg: msg }
 }

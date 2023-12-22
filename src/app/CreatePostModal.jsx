@@ -14,10 +14,10 @@ const router = useRouter()
     event.preventDefault();
     const formData = new FormData()
     formData.append('content', content)
-    const { ok, msg } = await createPost(localStorage.getItem('token'), formData)
+    const { success, msg, newId } = await createPost(localStorage.getItem('token'), formData)
     setShowCreatePostModal(false)
-    alert(ok, msg)
-    router.refresh()
+    alert(success, msg)
+    router.push(`/item/${newId}`)
   };
   return <>
     <Modal hideModalCallback={() => setShowCreatePostModal(false)}>

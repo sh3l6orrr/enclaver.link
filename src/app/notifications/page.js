@@ -46,8 +46,8 @@ export default function Notifications() {
   }
   function ReadAllButtion() {
     async function handleClick() {
-      const { ok, msg } = await readAllNotifs(token)
-      alert(ok, msg)
+      const { success, msg } = await readAllNotifs(token)
+      alert(success, msg)
     }
     return <button onClick={handleClick}>Read all Notifications</button>
   }

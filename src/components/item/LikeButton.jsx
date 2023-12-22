@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useStore } from "../../store";
-import { likeItem } from "./item";
+import { likeItem } from "./actions.js";
 
 export default function LikeButton({ item }) {
   const token = useStore(state => state.token)

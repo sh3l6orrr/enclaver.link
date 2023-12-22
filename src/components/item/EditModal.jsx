@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Space, Filler, Modal } from "../../util.jsx"
-import { updateItem } from "./item.js"
+import { updateItem } from "./actions.js"
 import { useStore } from "../../store.js"
 import { useRouter } from "next/navigation"
 
@@ -14,9 +14,9 @@ export default function EditModal({ id, defaultContent, setShowEditModal }) {
     event.preventDefault();
     const data = new FormData()
     data.append('content', content)
-    const { ok, msg } = await updateItem(token, id, data)
+    const { success, msg } = await updateItem(token, id, data)
     setShowEditModal(false)
-    alert(ok, msg)
+    alert(success, msg)
     router.refresh()
 
   };

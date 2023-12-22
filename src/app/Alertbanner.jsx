@@ -16,7 +16,7 @@ export default function AlertBanner() {
 
   return <>
     <div  className="alert-banner"
-      style={{ borderColor: alertMessage.ok ? 'green' : 'red' }}>
+      style={{ borderColor: alertMessage.success ? 'green' : 'red' }}>
       <span>{alertMessage.msg} </span>
     </div>
   </>

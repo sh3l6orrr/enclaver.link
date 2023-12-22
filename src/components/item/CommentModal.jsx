@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Space, Filler, Modal } from "../../util.jsx"
-import { commentItem } from "./item.js"
+import { commentItem } from "./actions.js"
 import { useStore } from "../../store.js"
 import { useRouter } from "next/navigation"
 
@@ -16,10 +16,10 @@ export default function CommentModal({ id, setShowCommentModal }) {
     event.preventDefault();
     const data = new FormData()
     data.append('content', content)
-    const { ok, msg } = await commentItem(token, id, data)
+    const { success, msg, newId } = await commentItem(token, id, data)
     setShowCommentModal(false)
-    alert(ok, msg)
-    router.refresh()
+    alert(success, msg)
+    router.push(`/item/${newId}`)
   };
   return <>
     <Modal hideModalCallback={() => setShowCommentModal(false)}>
