@@ -1,10 +1,10 @@
 import { Modal, Space } from "../../util"
 import { deleteItem } from "./actions.js"
 import { useRouter } from "next/navigation"
-import { useStore } from "../../store"
+import { useAppStore } from "../../store"
 
 export default function ConfirmDeletionModal({ id, setShowConfirmDeletionModal }) {
-  const token = useStore(state => state.token)
+  const token = useAppStore(state => state.token)
   const router = useRouter()
 
   async function handleDelete() {

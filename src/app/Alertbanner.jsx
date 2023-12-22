@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useStore } from "../store.js";
+import { useAppStore } from "../store.js";
 export default function AlertBanner() {
-  const alertMessage = useStore(state => state.alertMessage)
-  const setShowAlertBanner = useStore(state => state.setShowAlertBanner)
+  const alertMessage = useAppStore(state => state.alertMessage)
+  const setShowAlertBanner = useAppStore(state => state.setShowAlertBanner)
 
   useEffect(() => {
     let timeoutId;

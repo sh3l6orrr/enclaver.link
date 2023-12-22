@@ -1,18 +1,20 @@
 import { useState } from "react";
-import { useStore } from "../../store";
+import { useAppStore } from "../../store";
 import { likeItem } from "./actions.js";
+import styles from './styles.module.css'
+import { useRouter } from "next/navigation";
 
 export default function LikeButton({ item }) {
-  const token = useStore(state => state.token)
-  const setShowSignInModal = useStore(state => state.setShowSignInModal)
-  const loggedUser = useStore(state => state.loggedUser)
+  const token = useAppStore(state => state.token)
+  const router = useRouter()
+  const loggedUser = useAppStore(state => state.loggedUser)
   const [optimisticItem, setOptimisticItem] = useState(item)
 
   const handleLikeClick = async (event) => {
     event.stopPropagation();
 
     if (!loggedUser) {
-      setShowSignInModal(true);
+      router.push('/signin')
       return;
     }
     if (optimisticItem.liked_by.includes(loggedUser)) {
@@ -30,7 +32,7 @@ export default function LikeButton({ item }) {
     }
     await likeItem(token, item.id);
   }
-  return <div className="item-button" onClick={handleLikeClick}>
+  return <div className={styles.itemButton} onClick={handleLikeClick}>
     {optimisticItem.liked_by.includes(loggedUser) ? '♥' : '♡'} Like {optimisticItem.likes}
   </div>
 }

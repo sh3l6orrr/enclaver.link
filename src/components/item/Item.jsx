@@ -1,10 +1,10 @@
 'use client'
 
-import './styles.css'
+import styles from './styles.module.css'
 import React, { useState } from "react"
 import { Space, Seperator, Filler, Dropdown } from "../../util.jsx"
 import Link from 'next/link'
-import { useStore } from "../../store.js"
+import { useAppStore } from "../../store.js"
 import { useRouter } from 'next/navigation'
 import LikeButton from './LikeButton.jsx'
 import CommentModal from './CommentModal.jsx'
@@ -13,8 +13,7 @@ import ConfirmDeletionModal from './ConfirmDeletionModal.jsx'
 
 export default function Item({ item, isPost }) {
 
-  const setShowSignInModal = useStore(state => state.setShowSignInModal)
-  const loggedUser = useStore(state => state.loggedUser)
+  const loggedUser = useAppStore(state => state.loggedUser)
   const [showCommentModal, setShowCommentModal] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
@@ -53,10 +52,10 @@ export default function Item({ item, isPost }) {
 
 
   function CommentButton() {
-    return <div className="item-button" onClick={(event) => {
+    return <div className={styles.itemButton} onClick={(event) => {
       event.stopPropagation()
       if (!loggedUser) {
-        setShowSignInModal(true)
+        router.push('/signin')
         return
       }
       setShowCommentModal(true)
@@ -81,7 +80,7 @@ export default function Item({ item, isPost }) {
   }
   function ItemContent({ content, isPost }) {
     return <>
-      <div className={isPost ? "item-content-post" : "item-content"}>
+      <div className={isPost ? styles.itemContentPost : styles.itemContent}>
         {content}</div>
       {content.split(' ').length > 53 && !isPost && <i style={{ color: "steelblue", cursor: "pointer" }}>Show More</i>}
     </>
@@ -97,7 +96,7 @@ export default function Item({ item, isPost }) {
     </>
   }
   return <>
-    <div className={isPost ? null : "item"} >
+    <div className={isPost ? null : styles.item} >
       <Space h="1rem" />
       <div style={{ margin: "0 1rem" }} onClick={() => { isPost ? null : router.push(`/item/${item.id}`) }}>
         <ItemHeader />

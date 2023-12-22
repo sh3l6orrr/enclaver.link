@@ -1,12 +1,7 @@
 
-import '../index.css'
+import SideEffects from './SideEffects'
+import './global.css'
 
-import Wrap from './Wrap'
-
-export const metadata = {
-  title: 'Enclaver',
-  content: 'The social platform for minimalists.'
-}
 export const viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
@@ -19,13 +14,9 @@ export default function RootLayout({ children }) {
   return <>
     <html lang="en">
       <body>
-        <Wrap>
-          <div id='position-main'>
-            <main>
-              {children}
-            </main>
-          </div>
-        </Wrap>
+        <SideEffects>
+          {children}
+        </SideEffects>
       </body>
     </html>
   </>

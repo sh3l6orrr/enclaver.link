@@ -1,6 +1,6 @@
 'use client'
 
-import './util.css'
+import styles from './util.module.css'
 import React, { useEffect } from 'react';
 import { useRef } from 'react';
 
@@ -16,7 +16,7 @@ export const useClickOutside = (ref, callback) => {
 
 export function Seperator() {
   return <>
-    <div className='seperator' />
+    <div className={styles.seperator} />
   </>
 }
 export function Space({ h, w }) {
@@ -33,8 +33,8 @@ export function Modal({ children, hideModalCallback }) {
     return () => document.body.style.overflow = 'unset'
   }, [])
   return <>
-    <div className="modal">
-      <div ref={ref} className="modal-content">
+    <div className={styles.modal}>
+      <div ref={ref} className={styles.modalContent}>
         {children}
       </div>
     </div>
@@ -51,7 +51,7 @@ export function Dropdown({ children, hideDropdownCallback }) {
   useClickOutside(ref, hideDropdownCallback)
 
   return <>
-    <div ref={ref} className="dropdown">
+    <div ref={ref} className={styles.dropdown}>
       {children}
     </div>
   </>

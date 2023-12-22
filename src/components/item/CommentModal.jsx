@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import { Space, Filler, Modal } from "../../util.jsx"
 import { commentItem } from "./actions.js"
-import { useStore } from "../../store.js"
+import { useAppStore } from "../../store.js"
 import { useRouter } from "next/navigation"
 
 export default function CommentModal({ id, setShowCommentModal }) {
 
-  const token = useStore(state => state.token)
+  const token = useAppStore(state => state.token)
 
 
   const router = useRouter()
