@@ -29,8 +29,8 @@ export function Modal({ children, hideModalCallback }) {
   const ref = useRef(null)
   useClickOutside(ref, hideModalCallback)
   useEffect(() => {
-    document.body.classList.add('modal-open')
-    return () => document.body.classList.remove('modal-open')
+    document.body.style.overflow = 'hidden'
+    return () => document.body.style.overflow = 'unset'
   }, [])
   return <>
     <div className="modal">

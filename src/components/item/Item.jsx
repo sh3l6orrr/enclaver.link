@@ -81,10 +81,9 @@ export default function Item({ item, isPost }) {
   }
   function ItemContent({ content, isPost }) {
     return <>
-      <div style={isPost ? { whiteSpace: "pre-line" } :
-        { overflow: "hidden", maxHeight: '4.56rem' }}>
+      <div className={isPost ? "item-content-post" : "item-content"}>
         {content}</div>
-      {content.split(' ').length > 50 && !isPost && <i style={{ color: "steelblue", cursor: "pointer" }}>Show More</i>}
+      {content.split(' ').length > 53 && !isPost && <i style={{ color: "steelblue", cursor: "pointer" }}>Show More</i>}
     </>
   }
   function ToolBar() {

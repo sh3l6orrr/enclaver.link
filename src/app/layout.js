@@ -20,8 +20,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Wrap>
-
-          {children}
+          <div id='position-main'>
+            <main>
+              {children}
+            </main>
+          </div>
         </Wrap>
       </body>
     </html>

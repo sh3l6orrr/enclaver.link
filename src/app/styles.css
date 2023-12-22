@@ -22,11 +22,15 @@ aside {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+#position-main {
+  margin-top: 5.4rem;
+  margin-left: calc((100vw - 1025px) / 2);
+  margin-bottom: 2rem;;
+  width: 100vw;
+}
+
 main {
   position: relative;
-  left: calc((100vw - 1025px) / 2);
-  top: 5.4rem;
-  bottom: 4rem;
   width: 100vw;
   max-width: 750px;
   padding: 2rem;
@@ -100,11 +104,15 @@ nav {
 }
 
 @media (max-width: 1025px) {
+  #position-main {
+    margin-top: 3.4rem;
+    margin-left: unset;
+    margin-bottom: 3rem;
+  }
   main {
-    top: 3.4rem;
+    position: relative;
+    top: 0;
     width: 100vw;
-    left: calc((100vw - 750px) / 2);
-    bottom: 6rem;
     border-radius: 0;
   }
   nav {

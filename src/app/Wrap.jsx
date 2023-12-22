@@ -44,10 +44,7 @@ export default function Wrap({ children }) {
     <Header />
     <NavBar />
     <Sidebar />
-    <main>
-
-      {children}
-    </main>
+    {children}
 
     {showCreatePostModal && <CreatePostModal />}
     {showSignInModal && <SignModal />}

@@ -5,6 +5,17 @@
   cursor: pointer;
 }
 
+.item-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.item-content-post {
+  white-space: pre-line;
+}
+
 @media (hover: hover) {
   .item:hover {
     background-color: rgba(0, 0, 0, 0.05);
