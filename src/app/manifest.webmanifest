@@ -1,0 +1,23 @@
+{
+  "name": "Enclaver - The minimalist social platform",
+  "short_name": "Enclaver",
+  "description": "The minimalist social platform.",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icon",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

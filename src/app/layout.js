@@ -1,7 +1,3 @@
-
-import SideEffects from './SideEffects'
-import './global.css'
-
 export const viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
@@ -14,9 +10,7 @@ export default function RootLayout({ children }) {
   return <>
     <html lang="en">
       <body>
-        <SideEffects>
-          {children}
-        </SideEffects>
+        {children}
       </body>
     </html>
   </>
