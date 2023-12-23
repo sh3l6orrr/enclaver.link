@@ -6,7 +6,7 @@ export async function signIn(formData) {
   const res = await fetch(url + '/signin', {
     method: 'POST',
     body: formData,
-    cache: 'no-cache'
+    cache: 'no-store'
   })
   const { success, msg, token } = await res.json()
 
@@ -17,7 +17,7 @@ export async function signUp(formData) {
   const res = await fetch(url + '/signup', {
     method: 'POST',
     body: formData,
-    cache: 'no-cache'
+    cache: 'no-store'
   })
   const { success, msg } = await res.json()
   return { success: success, msg: msg }
@@ -38,7 +38,7 @@ export async function createPost(token, formData) {
     method: 'POST',
     headers: headers,
     body: formData,
-    cache: 'no-cache'
+    cache: 'no-store'
   };
   const res = await fetch(url + '/posts', requestOptions)
   const { success, msg, newId } = await res.json()

@@ -6,7 +6,7 @@ export async function signIn(formData) {
   const res = await fetch(url + '/signin', {
     method: 'POST',
     body: formData,
-    cache: 'no-cache'
+    cache: 'no-store'
   })
   const { success, msg, token } = await res.json()
 

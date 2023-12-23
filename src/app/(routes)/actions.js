@@ -8,7 +8,7 @@ export async function getUsername(token) {
   const res = await fetch(url + '/username', {
     method: 'GET',
     headers: headers,
-    cache: 'no-cache'
+    cache: 'no-store'
   })
   if (res.ok) {
     const username = await res.text()
