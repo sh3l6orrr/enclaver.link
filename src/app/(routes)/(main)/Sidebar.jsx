@@ -1,7 +1,7 @@
 import React from 'react';
-import { Space } from '../../../util.jsx';
+import { Space } from '@/util.jsx';
 import Link from 'next/link'
-import { useAppStore } from '../../../store.js';
+import { useAppStore } from '@/store.js';
 import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {

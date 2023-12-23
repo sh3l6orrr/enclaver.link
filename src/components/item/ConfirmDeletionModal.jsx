@@ -1,7 +1,7 @@
-import { Modal, Space } from "../../util"
+import { Modal, Space } from "@/util"
 import { deleteItem } from "./actions.js"
 import { useRouter } from "next/navigation"
-import { useAppStore } from "../../store"
+import { useAppStore } from "@/store"
 
 export default function ConfirmDeletionModal({ id, setShowConfirmDeletionModal }) {
   const token = useAppStore(state => state.token)

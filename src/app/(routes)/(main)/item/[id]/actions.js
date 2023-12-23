@@ -1,4 +1,4 @@
-import url from "../../../../../url";
+import url from "@/url";
 
 export async function getItem(id) {
   const res = await fetch(url + `/item/${id}`, { cache: 'no-store' });

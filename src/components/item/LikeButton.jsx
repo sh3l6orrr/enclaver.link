@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppStore } from "../../store";
+import { useAppStore } from "@/store";
 import { likeItem } from "./actions.js";
 import styles from './styles.module.css'
 import { useRouter } from "next/navigation";

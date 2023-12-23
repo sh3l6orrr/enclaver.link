@@ -6,7 +6,7 @@ import Sidebar from './Sidebar.jsx'
 
 import CreatePostModal from './CreatePostModal.jsx'
 
-import { useAppStore } from "../../../store.js"
+import { useAppStore } from "@/store.js"
 
 export default function Layout({ children }) {
   const showCreatePostModal = useAppStore(state => state.showCreatePostModal)

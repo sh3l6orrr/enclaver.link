@@ -1,6 +1,6 @@
 'use server'
 
-import url from "../../../../../url";
+import url from "@/url";
 
 export async function getProfile(username) {
   const res = await fetch(url + `/profile/${username}`, { cache: 'no-store' })

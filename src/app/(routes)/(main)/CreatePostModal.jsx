@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 
-import { Filler, Space, Modal } from '../../../util.jsx';
+import { Filler, Space, Modal } from '@/util.jsx';
 
-import { useAppStore } from "../../../store.js"
+import { useAppStore } from "@/store.js"
 import { createPost } from './actions.js'
 import { useRouter } from "next/navigation";
 

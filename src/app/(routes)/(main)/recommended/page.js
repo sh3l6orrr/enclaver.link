@@ -1,7 +1,7 @@
 import React from "react"
 // import url from "../url"
-import { Space, Seperator } from "../../../../util.jsx"
-import Item from "../../../../components/item/Item.jsx"
+import { Space, Seperator } from "@/util.jsx"
+import Item from "@/components/item/Item.jsx"
 
 export const metadata = {
   title: 'Recommended',

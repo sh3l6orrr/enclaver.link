@@ -26,6 +26,7 @@
 
 .title {
   transform: translate(0, -40%);
+  margin-bottom: unset;
 }
 
 .left {
@@ -52,7 +53,15 @@
 @media (max-width: 1025px) {
   .content {
     flex-direction: column;
-    padding: 50px;
+    padding: unset;
+    background-color: white;
   }
-
+  .form {
+    box-shadow: unset;
+  }
+  @media (prefers-color-scheme: dark) {
+    .content {
+      background-color: black;
+    }
+  }
 }

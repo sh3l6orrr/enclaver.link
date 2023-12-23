@@ -1,9 +1,9 @@
 'use client'
 
 import './style.css'
-import Item from "../../../../components/item/Item.jsx"
-import { Seperator, Space } from "../../../../util.jsx"
-import { useAppStore } from "../../../../store.js"
+import Item from "@/components/item/Item.jsx"
+import { Seperator, Space } from "@/util.jsx"
+import { useAppStore } from "@/store.js"
 import { useState } from "react"
 import { useEffect } from "react"
 import { getNotifs, readAllNotifs } from './actions.js'

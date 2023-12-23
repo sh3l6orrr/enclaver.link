@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link'
-import { Dropdown, Filler, Space } from '../../../util.jsx';
+import { Dropdown, Filler, Space } from '@/util.jsx';
 import { useRouter } from 'next/navigation'
-import { useAppStore } from '../../../store.js';
+import { useAppStore } from '@/store.js';
 import Image from 'next/image.js';
 
 export default function Header() {
@@ -54,7 +54,7 @@ export default function Header() {
             }}> ✽ Notifs </div>
             <div onClick={() => {
               router.push('/settings')
-              setShowAccountDropdown(false)
+              setShowAccountDropdownMobile(false)
             }}> ⚙︎ Settings</div>
             <div onClick={() => {
               localStorage.removeItem('token')
@@ -69,7 +69,7 @@ export default function Header() {
               ➢ Sign In
             </div>
             <div onClick={() => { router.push('/signup') }}>
-              ➣ Sign Up
+              ➣ Register
             </div>
           </>
         }
@@ -97,8 +97,8 @@ export default function Header() {
               ➢ Sign In
             </a>
             <Space w="1.3rem" />
-            <a onClick={() => router.push('/signin')}>
-              ➣ Sign Up
+            <a onClick={() => router.push('/signup')}>
+              ➣ Register
             </a>
           </>
         }
@@ -130,7 +130,6 @@ export default function Header() {
       </form>
     </>
   }
-  // const a = window.matchMedia('(prefers-color-scheme: dark)').matches
   return <>
     <header>
       <div className="horizontal align-items-center" style={{ maxWidth: "1025px", width: "100%" }}>

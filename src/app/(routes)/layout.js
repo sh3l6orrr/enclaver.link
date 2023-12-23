@@ -1,7 +1,7 @@
 'use client'
 
 import './global.css'
-import { useAppStore } from "../../store"
+import { useAppStore } from "@/store"
 import { getUsername } from './actions.js'
 import { useEffect } from "react"
 import AlertBanner from './Alertbanner.jsx'

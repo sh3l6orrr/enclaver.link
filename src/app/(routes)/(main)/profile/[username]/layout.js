@@ -1,4 +1,4 @@
-import { Space } from "../../../../../util.jsx"
+import { Space } from "@/util.jsx"
 import { getProfile } from "./actions.js"
 import ProfileHeader from "./ProfileHeader.jsx"
 

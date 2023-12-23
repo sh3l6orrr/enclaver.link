@@ -2,9 +2,9 @@
 
 import styles from './styles.module.css'
 import React, { useState } from "react"
-import { Space, Seperator, Filler, Dropdown } from "../../util.jsx"
+import { Space, Seperator, Filler, Dropdown } from "@/util.jsx"
 import Link from 'next/link'
-import { useAppStore } from "../../store.js"
+import { useAppStore } from "@/store.js"
 import { useRouter } from 'next/navigation'
 import LikeButton from './LikeButton.jsx'
 import CommentModal from './CommentModal.jsx'

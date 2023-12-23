@@ -33,11 +33,11 @@ export default function Page() {
     <form onSubmit={handleSubmit}>
       <div style={{ width: "19rem" }}>
         <div className='horizontal align-items-center'>
-          Username: <Filler /><input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+          Username: <Filler /><input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </div>
         <Space h="0.5rem" />
         <div className='horizontal align-items-center'>
-          Password: <Filler /> <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          Password: <Filler /> <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
       </div>
 

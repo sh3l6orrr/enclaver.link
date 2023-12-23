@@ -1,5 +1,5 @@
-import { Space, Seperator } from "../../../../util.jsx"
-import Item from "../../../../components/item/Item.jsx"
+import { Space, Seperator } from "@/util.jsx"
+import Item from "@/components/item/Item.jsx"
 import { search } from "./actions.js"
 
 export async function generateMetadata({ searchParams }) {

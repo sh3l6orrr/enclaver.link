@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Space, Filler, Modal } from "../../util.jsx"
+import { Space, Filler, Modal } from "@/util.jsx"
 import { updateItem } from "./actions.js"
-import { useAppStore } from "../../store.js"
+import { useAppStore } from "@/store.js"
 import { useRouter } from "next/navigation"
 
 export default function EditModal({ id, defaultContent, setShowEditModal }) {

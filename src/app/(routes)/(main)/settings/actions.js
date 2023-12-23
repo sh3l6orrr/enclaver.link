@@ -1,6 +1,6 @@
 'use server'
 
-import url from "../../../../url";
+import url from "@/url";
 
 export async function changePassword(token, formData) {
   const headers = new Headers();

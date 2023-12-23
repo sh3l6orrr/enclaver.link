@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppStore } from "../../store.js";
+import { useAppStore } from "@/store.js";
 export default function AlertBanner() {
   const alertMessage = useAppStore(state => state.alertMessage)
   const setShowAlertBanner = useAppStore(state => state.setShowAlertBanner)

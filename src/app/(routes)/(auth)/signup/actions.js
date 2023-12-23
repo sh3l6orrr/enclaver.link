@@ -1,6 +1,6 @@
 'use server'
 
-import url from "../../../../url"
+import url from "@/url"
 
 export async function signUp(formData) {
   const res = await fetch(url + '/signup', {

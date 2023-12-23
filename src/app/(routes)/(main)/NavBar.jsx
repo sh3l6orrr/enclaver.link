@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import React from 'react'
-import { Space } from '../../../util.jsx'
-import { useAppStore } from '../../../store.js'
+import { Space } from '@/util.jsx'
+import { useAppStore } from '@/store.js'
 import { useRouter } from 'next/navigation'
 
 

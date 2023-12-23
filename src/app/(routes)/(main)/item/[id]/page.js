@@ -1,6 +1,6 @@
 import React from 'react'
-import { Space } from '../../../../../util.jsx'
-import Item from '../../../../../components/item/Item.jsx'
+import { Space } from '@/util.jsx'
+import Item from '@/components/item/Item.jsx'
 import { getItem, getItemComments } from './actions.js'
 
 export async function generateMetadata({ params }) {

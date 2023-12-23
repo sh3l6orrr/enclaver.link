@@ -1,8 +1,8 @@
 'use client'
 
-import { Dropdown, Filler, Modal, Space } from "../../../../../util.jsx"
+import { Dropdown, Filler, Modal, Space } from "@/util.jsx"
 import React, { useState } from "react"
-import { useAppStore } from "../../../../../store.js"
+import { useAppStore } from "@/store.js"
 import { useRouter } from 'next/navigation'
 import { updateProfile } from "./actions.js"
 
