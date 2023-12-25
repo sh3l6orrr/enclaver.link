@@ -1,4 +1,3 @@
-import './styles.css'
 
 import { Space, Seperator } from "@/util.jsx"
 import Item from "@/components/item/Item.jsx"
