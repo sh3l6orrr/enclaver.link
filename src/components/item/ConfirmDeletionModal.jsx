@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useAppStore } from "@/store"
 
 export default function ConfirmDeletionModal({ id, setShowConfirmDeletionModal }) {
-  const token = useAppStore(state => state.token)
+  const { token } = useAppStore()
   const router = useRouter()
 
   async function handleDelete() {

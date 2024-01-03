@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useAppStore } from "@/store.js";
 export default function AlertBanner() {
-  const alertMessage = useAppStore(state => state.alertMessage)
-  const setShowAlertBanner = useAppStore(state => state.setShowAlertBanner)
+  const { alertMessage, setShowAlertBanner } = useAppStore()
 
   useEffect(() => {
     let timeoutId;
@@ -15,7 +14,7 @@ export default function AlertBanner() {
   }, [setShowAlertBanner]);
 
   return <>
-    <div  className="alert-banner"
+    <div className="alert-banner"
       style={{ borderColor: alertMessage.success ? 'green' : 'red' }}>
       <span>{alertMessage.msg} </span>
     </div>

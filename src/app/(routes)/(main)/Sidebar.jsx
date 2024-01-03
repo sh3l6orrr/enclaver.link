@@ -5,8 +5,7 @@ import { useAppStore } from '@/store.js';
 import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {
-  const setShowCreatePostModal = useAppStore(state => state.setShowCreatePostModal)
-  const loggedUser = useAppStore(state => state.loggedUser)
+  const { setShowCreatePostModal, loggedUser } = useAppStore()
   const router = useRouter()
   function AddButton() {
     return <button onClick={loggedUser ? () => setShowCreatePostModal(true) : () => router.push('/signin')} style={{ color: "dodgerblue" }}>

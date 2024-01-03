@@ -8,13 +8,7 @@ import AlertBanner from './Alertbanner.jsx'
 import LoadingBar from './LoadingBar.jsx'
 
 export default function SideEffects({ children }) {
-  const setLoggedUser = useAppStore(state => state.setLoggedUser)
-  const setAlertMessage = useAppStore(state => state.setAlertMessage)
-  const setShowAlertBanner = useAppStore(state => state.setShowAlertBanner)
-  const setToken = useAppStore(state => state.setToken)
-  const showAlertBanner = useAppStore(state => state.showAlertBanner)
-  const showLoadingBar = useAppStore(state => state.showLoadingBar)
-
+  const { setLoggedUser, setAlertMessage, setShowAlertBanner, setToken, showAlertBanner, showLoadingBar } = useAppStore()
   useEffect(() => {
     async function autoLogIn() {
       const token = localStorage.getItem('token')

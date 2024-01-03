@@ -7,8 +7,7 @@ import { useRouter } from 'next/navigation'
 import { updateProfile } from "./actions.js"
 
 export default function ProfileHeader({ profile }) {
-  const token = useAppStore(state => state.token)
-  const loggedUser = useAppStore(state => state.loggedUser)
+  const { token, loggedUser } = useAppStore()
   const [showProfileDropdown, setShowProfileDropdown] = useState(false)
   const [showEditProfileModal, setShowEditProfileModal] = useState(false)
   const router = useRouter()

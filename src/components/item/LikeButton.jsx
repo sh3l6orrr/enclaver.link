@@ -5,9 +5,8 @@ import styles from './styles.module.css'
 import { useRouter } from "next/navigation";
 
 export default function LikeButton({ item }) {
-  const token = useAppStore(state => state.token)
+  const { token, loggedUser } = useAppStore()
   const router = useRouter()
-  const loggedUser = useAppStore(state => state.loggedUser)
   const [optimisticItem, setOptimisticItem] = useState(item)
 
   const handleLikeClick = async (event) => {

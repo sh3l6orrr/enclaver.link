@@ -9,8 +9,7 @@ import { useEffect } from "react"
 import { getNotifs, readAllNotifs } from './actions.js'
 
 export default function Notifications() {
-  const token = useAppStore(state => state.token)
-  const loggedUser = useAppStore(state => state.loggedUser)
+  const {token,loggedUser }= useAppStore()
   const [notifications, setNotifications] = useState(null)
 
   useEffect(() => {

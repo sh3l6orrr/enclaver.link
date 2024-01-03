@@ -8,8 +8,7 @@ import { useAppStore } from '@/store.js';
 import Image from 'next/image.js';
 
 export default function Header() {
-  const loggedUser = useAppStore((state) => state.loggedUser)
-  const setLoggedUser = useAppStore((state) => state.setLoggedUser)
+  const {loggedUser, setLoggedUser} = useAppStore()
   const [showAccountDropdown, setShowAccountDropdown] = useState(false)
   const [showAccountDropdownMobile, setShowAccountDropdownMobile] = useState(false)
   const router = useRouter()

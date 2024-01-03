@@ -13,7 +13,7 @@ import ConfirmDeletionModal from './ConfirmDeletionModal.jsx'
 
 export default function Item({ item, isPost }) {
 
-  const loggedUser = useAppStore(state => state.loggedUser)
+  const { loggedUser } = useAppStore()
   const [showCommentModal, setShowCommentModal] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)

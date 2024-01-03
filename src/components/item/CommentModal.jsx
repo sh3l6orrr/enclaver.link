@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 
 export default function CommentModal({ id, setShowCommentModal }) {
 
-  const token = useAppStore(state => state.token)
+  const {token} = useAppStore()
 
 
   const router = useRouter()

@@ -7,8 +7,7 @@ import { signIn } from "./actions.js";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
-  const setLoggedUser = useAppStore(state => state.setLoggedUser)
-  const setToken = useAppStore(state => state.setToken)
+  const { setLoggedUser, setToken } = useAppStore()
   const router = useRouter()
 
   const [username, setUsername] = useState('')

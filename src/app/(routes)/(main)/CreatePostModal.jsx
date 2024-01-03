@@ -7,9 +7,9 @@ import { createPost } from './actions.js'
 import { useRouter } from "next/navigation";
 
 export default function CreatePostModal() {
-  const setShowCreatePostModal = useAppStore(state => state.setShowCreatePostModal)
+  const { setShowCreatePostModal } = useAppStore()
   const [content, setContent] = useState('')
-const router = useRouter()
+  const router = useRouter()
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData()

@@ -9,8 +9,7 @@ import { useRouter } from 'next/navigation'
 
 export default function NavBar() {
   const router = useRouter()
-  const setShowCreatePostModal = useAppStore(state => state.setShowCreatePostModal)
-  const loggedUser = useAppStore(state => state.loggedUser)
+  const {setShowCreatePostModal,loggedUser} = useAppStore()
   return <>
     <nav>
       <div id="navbar">
