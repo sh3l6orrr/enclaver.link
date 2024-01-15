@@ -4,7 +4,7 @@ import Item from "@/components/item/Item.jsx"
 import { getLatest } from "./actions.js"
 
 export const metadata = {
-  title: 'Enclaver: social platform for minimalists',
+  title: 'Enclaver: The social platform for minimalists',
   content: 'Enclaver is the minimalist social platform.'
 }
 
