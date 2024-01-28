@@ -1,5 +1,6 @@
 User-Agent: *
 Allow: /
 Disallow: /private/
-
+Disallow: /notifications
+Disallow: /settings
 Sitemap: https://enclaver.link/sitemap.xml
